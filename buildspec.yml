@@ -21,7 +21,7 @@ phases:
   build:
     commands:
       - git log | head -5 | tail -1|grep "commited"
-      - if [[ $? == 0 ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
+      - if[[ $? == 0 ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
       - echo $BUILD_OUTPUT
       - git status
       - ls
