@@ -20,7 +20,8 @@ phases:
       - cat README.md
   build:
     commands:
-      - BUILD_OUTPUT=$(git log | head -5 | tail -1|grep -q "commited" && basename "$PWD")
+      - git log | head -5 | tail -1|grep "commited"
+      - if [[ $? -eq 0 ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
       - echo $BUILD_OUTPUT
       - git status
       - ls
@@ -28,7 +29,8 @@ phases:
       - pwd
       - cd $CODEBUILD_SRC_DIR_Source2
       - pwd
-      - git log | head -100
+      - git log | head -5 | tail -1|grep "commited"
+      - if [[ $? -eq 0 ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
   #post_build:
     #commands:
       # - command
