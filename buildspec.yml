@@ -18,14 +18,14 @@ phases:
       - cat README.md
   build:
     commands:
-      - git log | tail -5
+      - git log | head -5
       - git status
       - ls
       - git archive --format=zip HEAD > application.zip
       - pwd
       - cd $CODEBUILD_SRC_DIR_Source2
       - pwd
-      - git log | tail -5
+      - git log | head -5
   #post_build:
     #commands:
       # - command
