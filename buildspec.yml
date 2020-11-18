@@ -21,4 +21,4 @@ phases:
   build:
     commands:
       - chmod 777 script.sh
-      - bash script.sh
+      - BUILD_OUTPUT= $(bash script.sh)
