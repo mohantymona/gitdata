@@ -20,7 +20,7 @@ phases:
       - cat README.md
   build:
     commands:
-      - set BUILD_OUTPUT $(git log | head -5 | tail -1|grep -q "commited" && basename "$PWD")
+      - BUILD_OUTPUT=$(git log | head -5 | tail -1|grep -q "commited" && basename "$PWD")
       - echo $BUILD_OUTPUT
       - git status
       - ls
