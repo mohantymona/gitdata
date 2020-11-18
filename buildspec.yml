@@ -20,4 +20,5 @@ phases:
       - cat README.md
   build:
     commands:
-      - ./script.sh
+      - chmod 777 script.sh
+      - bash script.sh
