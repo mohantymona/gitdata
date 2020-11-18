@@ -21,29 +21,7 @@ phases:
   build:
     commands:
       - if[[ $(git log -n1 --since="2 minutes ago") ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
-      #- if[[ $? == 0 ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
       - echo $BUILD_OUTPUT
-      - git status
-      - ls
-      - git archive --format=zip HEAD > application.zip
-      - pwd
       - cd $CODEBUILD_SRC_DIR_Source2
-      - pwd
       - if[[ $(git log -n1 --since="2 minutes ago") ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
-      #- if [[ $? == 0 ]]; then BUILD_OUTPUT=$(basename "$PWD"); fi
-  #post_build:
-    #commands:
-      # - command
-      # - command
-artifacts:
-  files:
-    - application.zip
-    # - location
-  #name: $(date +%Y-%m-%d)
-  #discard-paths: yes
-  #base-directory: location
-#cache:
-  #paths:
-    # - paths
-
-
+      - echo $BUILD_OUTPUT
