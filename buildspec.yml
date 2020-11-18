@@ -2,7 +2,8 @@ version: 0.2
 
 env:
   git-credential-helper: yes
-  outputVar: test
+  exported-variables:
+    - BUILD_OUTPUT
 phases:
   install:
     #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
@@ -19,7 +20,8 @@ phases:
       - cat README.md
   build:
     commands:
-      - outputVar = $(git log | head -5 | tail -1|grep -q "commited" && basename "$PWD")
+      - set BUILD_OUTPUT $(git log | head -5 | tail -1|grep -q "commited" && basename "$PWD")
+      - echo $BUILD_OUTPUT
       - git status
       - ls
       - git archive --format=zip HEAD > application.zip
