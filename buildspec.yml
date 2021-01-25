@@ -20,5 +20,6 @@ phases:
       - cat README.md
   build:
     commands:
+      - echo $branch
       - chmod 777 script.sh
       - BUILD_OUTPUT=$(bash script.sh)
